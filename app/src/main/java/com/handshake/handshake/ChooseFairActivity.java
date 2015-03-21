@@ -24,25 +24,26 @@ import java.util.List;
 
 public class ChooseFairActivity extends Activity {
     ListView listView ;
+    final List<String> fairs = new ArrayList<String>();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+
+
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_fair);
 
         // Get ListView object from xml
-        listView = (ListView) findViewById(R.id.list);
 
 
-        final List<String> fairs = new ArrayList<String>();
+
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Fair");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> fairList, ParseException e) {
                 if (e == null) {
-                    Log.d("name", "Retrieved " + fairList.size() + " fairs");
+                    //Log.d("name", "Retrieved " + fairList.size() + " fairs");
                     for (ParseObject o : fairList) {
                         fairs.add(o.getString("name"));
-                        Log.d("name is", fairs.get(fairs.size() - 1));
                     }
 
                 } else {
@@ -53,10 +54,16 @@ public class ChooseFairActivity extends Activity {
         Log.d("debug", "next");
 
 
+
+    }
+
+    protected void onPostCreate (Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
         String[] values = new String[fairs.size()];
-        int i = 0;
-        for (String s : fairs) {
-            values[i] = s;
+        Log.d("Debug", "Now");
+        for (int i = 0; i < fairs.size(); i++) {
+            Log.d("name is", fairs.get(i));
+            values[i] = fairs.get(i);
             i++;
         }
         // Define a new Adapter
@@ -64,7 +71,7 @@ public class ChooseFairActivity extends Activity {
         // Second parameter - Layout for the row
         // Third parameter - ID of the TextView to which the data is written
         // Forth - the Array of data
-
+        listView = (ListView) findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
