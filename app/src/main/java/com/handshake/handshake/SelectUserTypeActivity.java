@@ -1,11 +1,11 @@
 package com.handshake.handshake;
 
-import com.handshake.handshake.util.SystemUiHider;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.handshake.handshake.util.SystemUiHider;
 
 
 /**
@@ -24,8 +24,13 @@ public class SelectUserTypeActivity extends Activity {
         setContentView(R.layout.activity_select_user_type);
     }
 
-    public void nextScreen(View view) {
+    public void chooseStudent(View view) {
         Intent intent = new Intent(this, JobSeekerActivity.class);
+        startActivity(intent);
+    }
+
+    public void chooseEmployer(View view) {
+        Intent intent = new Intent(this, EmployeeViewActivity.class);
         startActivity(intent);
     }
 }

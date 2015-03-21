@@ -45,7 +45,7 @@ public class ChooseFairActivity extends Activity {
                     for (ParseObject o : fairList) {
                         fairs.add(o.getString("name"));
                     }
-
+                    helper();
                 } else {
                     Log.d("name", "Error: " + e.getMessage());
                 }
@@ -57,8 +57,8 @@ public class ChooseFairActivity extends Activity {
 
     }
 
-    protected void onPostCreate (Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    private void helper() {
+        super.onResume();
         String[] values = new String[fairs.size()];
         Log.d("Debug", "Now");
         for (int i = 0; i < fairs.size(); i++) {
@@ -83,14 +83,14 @@ public class ChooseFairActivity extends Activity {
         // ListView Item Click Listener
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView parent, View v, int position, long id) {
-//                ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
-                Intent intent = new Intent(ChooseFairActivity.this, SelectUserTypeActivity.class);
-                startActivity(intent);
-            }
-
-        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            public void onItemClick(AdapterView parent, View v, int position, long id) {
+////                ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
+//                Intent intent = new Intent(ChooseFairActivity.this, SelectUserTypeActivity.class);
+//                startActivity(intent);
+//            }
+//
+//        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
