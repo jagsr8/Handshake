@@ -6,7 +6,7 @@
     <Button
         android:layout_width="160dp"
         android:layout_height="105dp"
-        android:text="New Button"
+        android:text="Upload File"
         android:id="@+id/button3"
         android:layout_gravity="center"
         android:onClick="sendFile"/>
