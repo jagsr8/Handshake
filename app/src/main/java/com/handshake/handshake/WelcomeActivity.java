@@ -20,11 +20,25 @@ public class WelcomeActivity extends Activity {
 
         Parse.initialize(this, "Aw2wgeVa9ihzU3OqRggicJ2rcFoQFxQYIWDhnaFR", "sgADHHUmzraH6rkEoskMeKpjvkHSq9z0DQWBgZJw");
 
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
+        populate();
 
         setContentView(R.layout.activity_welcome);
+    }
+
+    private void populate() {
+        for (int i = 0; i < 20; i++) {
+            ParseObject company = new ParseObject("Company");
+            company.put("fair", "Fair 20");
+            company.put("name", "Company " + (i + 1));
+            company.put("key", i);
+            company.saveInBackground();
+        }
+        for (int i = 0; i < 20; i++) {
+            ParseObject company = new ParseObject("Fair");
+            company.put("name", "Fair " + (i + 1));
+            company.put("count", i + 1);
+            company.saveInBackground();
+        }
     }
 
     public void toNext(View view) {
