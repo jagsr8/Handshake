@@ -3,4 +3,15 @@
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_choose_fair">ChooseFairActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_select_user_type">SelectUserTypeActivity</string>
+    <string name="title_activity_company_select">CompanySelectActivity</string>
+
+    <string name="title_activity_employee_view">EmployeeViewActivity</string>
+
+    <string name="title_activity_job_seeker">JobSeekerActivity</string>
 </resources>

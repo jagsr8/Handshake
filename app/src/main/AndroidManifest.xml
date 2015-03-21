@@ -18,6 +18,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ChooseFairActivity"
+            android:label="@string/title_activity_choose_fair" >
+        </activity>
+        <activity
+            android:name=".SelectUserTypeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_select_user_type"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
+        <activity
+            android:name=".CompanySelectActivity"
+            android:label="@string/title_activity_company_select" >
+        </activity>
+        <activity
+            android:name=".EmployeeViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_employee_view"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
+        <activity
+            android:name=".JobSeekerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_job_seeker"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
     </application>
 
 </manifest>
