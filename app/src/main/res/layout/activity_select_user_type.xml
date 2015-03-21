@@ -2,44 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:background="#0099cc"
     tools:context="com.handshake.handshake.SelectUserTypeActivity"
-    android:rowCount="34"
+    android:rowCount="36"
     android:columnCount="10">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Insert Name Here"
-        android:id="@+id/textView2"
-        android:layout_row="18"
-        android:layout_column="1"
-        android:layout_gravity="center"
-        android:textSize="30dp" />
-
-    <TextView
-        android:layout_width="130dp"
-        android:layout_height="120dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Name"
-        android:id="@+id/textView3"
-        android:layout_row="21"
-        android:layout_column="0"
-        android:layout_gravity="center_horizontal" />
-
     <Button
-        android:layout_width="142dp"
-        android:layout_height="114dp"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
         android:text="Employee"
         android:id="@+id/button"
         android:layout_column="1"
-        android:layout_row="32" />
+        android:layout_row="10"
+        android:onClick="chooseEmployer"/>
 
     <Button
-        android:layout_width="139dp"
-        android:layout_height="108dp"
+        android:layout_width="match_parent"
+        android:layout_height="169dp"
         android:text="Student"
         android:id="@+id/button2"
         android:layout_column="1"
-        android:layout_row="33"
-        android:onClick="nextScreen"/>
+        android:layout_row="35"
+        android:onClick="chooseStudent"/>
 
 </GridLayout>
