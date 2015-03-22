@@ -30,23 +30,25 @@ public class CompanySelectActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_company_select);
+        setContentView(R.layout.activity_choose_fair);
         Intent intent = getIntent();
         fairChoice = intent.getStringExtra("fairSelection");
+
         // Get ListView object from xml
 
 
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Company");
 
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Company");
+        query.whereEqualTo("fair", fairChoice);
         query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> fairList, ParseException e) {
+            public void done(List<ParseObject> companyList, ParseException e) {
                 if (e == null) {
                     //Log.d("name", "Retrieved " + fairList.size() + " fairs");
-                    for (ParseObject o : fairList) {
+                    for (ParseObject o : companyList) {
                         companies.add(o.getString("name"));
                     }
-
+                    helper();
                 } else {
                     Log.d("name", "Error: " + e.getMessage());
                 }
@@ -58,8 +60,8 @@ public class CompanySelectActivity extends Activity {
 
     }
 
-    protected void onPostCreate (Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    private void helper() {
+        super.onResume();
         String[] values = new String[companies.size()];
         Log.d("Debug", "Now");
         for (int i = 0; i < companies.size(); i++) {
@@ -84,14 +86,14 @@ public class CompanySelectActivity extends Activity {
         // ListView Item Click Listener
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView parent, View v, int position, long id) {
-//                ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
-                Intent intent = new Intent(ChooseFairActivity.this, SelectUserTypeActivity.class);
-                startActivity(intent);
-            }
-
-        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            public void onItemClick(AdapterView parent, View v, int position, long id) {
+////                ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
+//                Intent intent = new Intent(ChooseFairActivity.this, SelectUserTypeActivity.class);
+//                startActivity(intent);
+//            }
+//
+//        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
