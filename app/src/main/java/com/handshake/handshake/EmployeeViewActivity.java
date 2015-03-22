@@ -4,6 +4,7 @@ import com.handshake.handshake.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,12 +20,15 @@ import android.view.View;
  */
 public class EmployeeViewActivity extends Activity {
 
+    String companyChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_employee_view);
+        Intent intent = getIntent();
+        companyChoice = intent.getStringExtra("companySelection");
+
 
 
     }
