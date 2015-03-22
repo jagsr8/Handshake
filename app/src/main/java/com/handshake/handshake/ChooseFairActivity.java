@@ -19,12 +19,15 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 
 public class ChooseFairActivity extends Activity {
     ListView listView ;
     final List<String> fairs = new ArrayList<String>();
+    public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
     @Override
 
 
@@ -45,6 +48,7 @@ public class ChooseFairActivity extends Activity {
                     for (ParseObject o : fairList) {
                         fairs.add(o.getString("name"));
                     }
+                    Collections.sort(fairs);
                     helper();
                 } else {
                     Log.d("name", "Error: " + e.getMessage());
@@ -58,14 +62,13 @@ public class ChooseFairActivity extends Activity {
     }
 
     private void helper() {
-        super.onResume();
         String[] values = new String[fairs.size()];
         Log.d("Debug", "Now");
-        for (int i = 0; i < fairs.size(); i++) {
-            Log.d("name is", fairs.get(i));
-            values[i] = fairs.get(i);
-            i++;
-        }
+//        for (int i = 0; i < fairs.size(); i++) {
+////            Log.d("name is", fairs.get(i));
+//            values[i] = fairs.get(i);
+//            i++;
+//        }
         // Define a new Adapter
         // First parameter - Context
         // Second parameter - Layout for the row
@@ -73,7 +76,7 @@ public class ChooseFairActivity extends Activity {
         // Forth - the Array of data
         listView = (ListView) findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+                android.R.layout.simple_list_item_1, android.R.id.text1, fairs);
 
 
         // Assign adapter to ListView
@@ -83,14 +86,17 @@ public class ChooseFairActivity extends Activity {
         // ListView Item Click Listener
 
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView parent, View v, int position, long id) {
-////                ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
-//                Intent intent = new Intent(ChooseFairActivity.this, SelectUserTypeActivity.class);
-//                startActivity(intent);
-//            }
-//
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
+//                ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
+                Log.v("position--", ""+ position);
+                String anyString = fairs.get(position);
+                Intent intent = new Intent(ChooseFairActivity.this, SelectUserTypeActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, anyString);
+                startActivity(intent);
+            }
+
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
