@@ -98,7 +98,6 @@ public class EmployeeViewActivity extends Activity {
                 temp = temp - FIST;
             }
             i++;
-            Log.d("debug ", seq);
         }
         TextView sequenceDisplay = (TextView)findViewById(R.id.sequence);
         sequenceDisplay.setText(seq);

@@ -26,7 +26,8 @@
             android:gravity="center"
             android:text="New Text"
             android:id="@+id/sequence"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:textSize="40dp" />
     </FrameLayout>
 
 </FrameLayout>
