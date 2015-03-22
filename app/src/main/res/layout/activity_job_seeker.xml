@@ -1,13 +1,18 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:background="#0099cc"
-    tools:context="com.handshake.handshake.JobSeekerActivity">
+    tools:context="com.handshake.handshake.JobSeekerActivity"
+    android:id="@+id/Password">
 
-    <Button
-        android:layout_width="160dp"
-        android:layout_height="105dp"
-        android:text="Upload File"
-        android:id="@+id/button3"
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:maxLength="4"
+        android:hint="Enter company Code"
         android:layout_gravity="center"
-        android:onClick="sendFile"/>
+        android:textSize="25dp"
+        android:textIsSelectable="false" />
 </FrameLayout>
