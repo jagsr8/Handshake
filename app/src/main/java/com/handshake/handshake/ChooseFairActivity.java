@@ -62,18 +62,6 @@ public class ChooseFairActivity extends Activity {
     }
 
     private void helper() {
-        String[] values = new String[fairs.size()];
-        Log.d("Debug", "Now");
-//        for (int i = 0; i < fairs.size(); i++) {
-////            Log.d("name is", fairs.get(i));
-//            values[i] = fairs.get(i);
-//            i++;
-//        }
-        // Define a new Adapter
-        // First parameter - Context
-        // Second parameter - Layout for the row
-        // Third parameter - ID of the TextView to which the data is written
-        // Forth - the Array of data
         listView = (ListView) findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, fairs);

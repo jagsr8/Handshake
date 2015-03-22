@@ -17,6 +17,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -25,6 +26,7 @@ public class CompanySelectActivity extends Activity {
     ListView listView;
     final List<String> companies = new ArrayList<String>();
     String fairChoice;
+    public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
 
 
     @Override
@@ -32,7 +34,7 @@ public class CompanySelectActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_fair);
         Intent intent = getIntent();
-        fairChoice = intent.getStringExtra("fairSelection");
+        fairChoice = intent.getStringExtra(SelectUserTypeActivity.EXTRA_MESSAGE);
 
         // Get ListView object from xml
 
@@ -48,6 +50,7 @@ public class CompanySelectActivity extends Activity {
                     for (ParseObject o : companyList) {
                         companies.add(o.getString("name"));
                     }
+                    Collections.sort(companies);
                     helper();
                 } else {
                     Log.d("name", "Error: " + e.getMessage());
@@ -61,22 +64,9 @@ public class CompanySelectActivity extends Activity {
     }
 
     private void helper() {
-        super.onResume();
-        String[] values = new String[companies.size()];
-        Log.d("Debug", "Now");
-        for (int i = 0; i < companies.size(); i++) {
-            Log.d("name is", companies.get(i));
-            values[i] = companies.get(i);
-            i++;
-        }
-        // Define a new Adapter
-        // First parameter - Context
-        // Second parameter - Layout for the row
-        // Third parameter - ID of the TextView to which the data is written
-        // Forth - the Array of data
         listView = (ListView) findViewById(R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+                android.R.layout.simple_list_item_1, android.R.id.text1, companies);
 
 
         // Assign adapter to ListView
@@ -86,14 +76,17 @@ public class CompanySelectActivity extends Activity {
         // ListView Item Click Listener
 
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView parent, View v, int position, long id) {
-////                ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
-//                Intent intent = new Intent(ChooseFairActivity.this, SelectUserTypeActivity.class);
-//                startActivity(intent);
-//            }
-//
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
+//                ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
+                Log.v("position--", ""+ position);
+                String anyString = companies.get(position);
+                Intent intent = new Intent(CompanySelectActivity.this, EmployeeViewActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, anyString);
+                startActivity(intent);
+            }
+
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

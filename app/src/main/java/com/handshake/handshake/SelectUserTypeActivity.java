@@ -15,13 +15,16 @@ import android.widget.TextView;
 
 public class SelectUserTypeActivity extends Activity {
 
+    String message;
+    public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_select_user_type);
         Intent intent = getIntent();
-        String message = intent.getStringExtra(ChooseFairActivity.EXTRA_MESSAGE);
+        message = intent.getStringExtra(ChooseFairActivity.EXTRA_MESSAGE);
         TextView textView = (TextView) findViewById(R.id.textView);
         textView.setTextSize(40);
         textView.setText(message);
@@ -33,7 +36,8 @@ public class SelectUserTypeActivity extends Activity {
     }
 
     public void chooseEmployer(View view) {
-        Intent intent = new Intent(this, EmployeeViewActivity.class);
+        Intent intent = new Intent(this, CompanySelectActivity.class);
+        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 }
